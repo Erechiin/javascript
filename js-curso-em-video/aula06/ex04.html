@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiro Script</title>
+    <style>
+        html{
+            height: 100vh;
+        }
+
+        body{
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            text-transform: capitalize;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>olá, mundo!</h1>
+</body>
+
+<script>
+    //para comentários em uma linha apenas
+    
+    /*para comentários
+     de mais de uma linha*/
+
+   var nome = window.prompt("Qual o seu nome?")
+   document.write(`Olá <strong>${nome}</strong>, Seu nome tem ${nome.length} letras! <br>`)
+   document.write(`Seu nome em letras maiúsculas é <strong>${nome.toUpperCase()}</strong>! <br>`)
+   document.write(`Seu nome em letras minúsculas é <strong>${nome.toLowerCase()}</strong>! <br>`)
+
+   var numero = 1563.5
+   window.alert(`${numero.toFixed(3)}`)
+   window.alert(`${numero.toFixed(3).replace('.', ',')}`)
+   window.alert(`${numero.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`)
+   
+</script>
+</html>
