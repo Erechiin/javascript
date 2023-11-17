@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5</title>
+    <style>
+        html{
+            height: 100vh;
+        }
+
+        body{
+            background-color: black;
+            color: rgba(255, 255, 255, 0.801);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Iniciando estudos com DOM</h1>
+    <p>Aqui vai o resultado</p>
+    <p>Aprendendo a usar o <strong>DOM</strong> em JavaScript</p>
+    <div>Clique aqui!</div>
+
+    <script>
+
+        var p1 = window.document.getElementsByTagName('p')[0]
+        window.document.write(`está escrito assim: ${p1.innerText}`)
+
+        /* o innerText é pra selecionar o texto dentro da linha*/
+        /* o innerHTML seleciona o codigo daquela linha*/
+
+        var p2 = window.document.getElementsByTagName('p')[1]
+        p2.style.fontSize = '1.5em'
+    </script>
+
+</body>
+</html>
