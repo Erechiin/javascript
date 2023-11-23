@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testes</title>
+    <style>
+        body{
+            background-color: black;
+            color: rgb(255, 255, 255);
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+        }
+
+        p{
+            width: 50vw;
+            margin: auto;
+            line-height: 2rem;
+            font-size: 1.5em;
+            font-weight: 500;
+            text-align: justify;
+            text-indent: 2em;
+        }
+
+        div{
+            width: 80vw;
+            margin: 50px auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="divisor">
+        <p class="paragrafo" id="ium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet magnam non itaque veniam inventore assumenda reiciendis tenetur eligendi temporibus quaerat.</p>
+        <p class="paragrafo" id="idois">Eveniet ex modi quia suscipit sapiente amet id. Quidem officia optio culpa animi dolores doloribus dolorem iure adipisci quisquam quam.</p>
+        <p class="paragrafo" id="itres">Error consequuntur iure qui minima mollitia consequatur tenetur, deserunt veritatis quisquam at excepturi atque provident praesentium nam nobis aliquid distinctio.</p>
+        <p class="paragrafo" id="iquatro">Fuga praesentium ipsum iusto eveniet reprehenderit maxime architecto aperiam consectetur id? Consectetur, dolorum architecto quisquam vitae officiis voluptas explicabo odit.</p>
+        <p class="paragrafo" id="icinco">In nulla quam natus labore, qui voluptatem deserunt. Perspiciatis eum sapiente laboriosam quia, necessitatibus quod eligendi laborum facere inventore fuga.</p>
+    </div>
+
+    <script>
+        var v1 = window.document.getElementsByTagName("p")[0]
+        window.alert(`Isso está escrito em P1: ${v1.innerHTML}`)
+
+        var v2 = window.document.getElementById("idois")
+        window.alert(`Isso está escrito em P2: ${v2.innerHTML}`)
+
+        var v3 = window.document.getElementsByClassName("paragrafo")[2]
+        window.alert(`Isso está escrito em P3: ${v3.innerHTML}`)
+
+        var corpo = window.document.getElementsByClassName("paragrafo")[2]
+        corpo.style.background = "white"
+        corpo.style.color = "black"
+        window.document.getElementById('itres').innerText = "Este texto foi modificado com JS"
+
+        var newyork = window.document.querySelector("div#divisor")
+        newyork.style.background = "green"
+
+        /*Obs: o querySelector é recente, entao pode nao funcionar em máquinas com o ECMAScript antigo*/
+    </script>
+</body>
+</html>
