@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos DOM</title>
+    <style>
+        html{
+            height: 100vw;
+        }
+
+        body{
+            background-color: darkgray;
+        }
+
+        #area{
+            background-color: pink;
+            color: white;
+            width: 200px;
+            height: 200px;
+            font: bold 1.5em arial, sans-serif;
+            text-transform: uppercase;
+
+            text-shadow: -1px 1px 5px rgba(0, 0, 0, 0.589);
+            box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.295);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 15px;
+            margin: auto;
+
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+    <div id="area">
+        interaja...
+    </div>
+
+    <script>
+        var a = window.document.getElementById("area")
+        a.addEventListener("click", clicou)
+        a.addEventListener("mouseenter", entrou)
+        a.addEventListener("mouseout", saiu)
+
+        function clicou(){
+            a.style.backgroundColor = "black"
+            a.style.color = "pink"
+            a.innerText = "Clicou!"
+        }
+
+        function entrou(){
+            a.style.backgroundColor = "#ff9dad"
+            a.innerText = "entrou!"
+        }
+
+        function saiu(){
+            a.style.backgroundColor = "pink"
+            a.style.color = "white"
+            a.innerText = "interaja..."
+        }
+    </script>
+    
+</body>
+</html>
