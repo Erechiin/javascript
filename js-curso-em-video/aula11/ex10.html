@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detran</title>
+    <style>
+        body{
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        input{
+            text-align: center;
+            width: 60px;
+        }
+
+        label{
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Sistema de multas
+    </h1>
+    <label for="inum">Velocidade</label>
+    <input type="text" name="num" id="inum" required maxlength="3" pattern="^[0-9]{3}$" autofocus>
+    <input type="submit" value="Enviar" onclick="velocidade()">
+
+    <script>
+        
+        function velocidade(){
+            var vel_input = window.document.getElementById("inum")
+            var vel_valor = Number(vel_input.value)
+
+            window.alert(`Sua velocidade é ${vel_valor}km/h`)
+            if(vel_valor>60){
+                window.alert("Você ultrapassou o limite permitido de velocidade. MULTADO!")
+            }
+            window.alert("Dirija sempre com cinto de segurança")
+        }
+    </script>
+
+</body>
+</html>
