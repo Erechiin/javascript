@@ -3,25 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>País</title>
-</head>
-<body>
-    <h1>Questionário de Nacionalidade</h1>
-    <input type="text" name="txt" id="itxt" required autofocus>
-    <input type="submit" value="Responder" onclick="nacionalidade()">
-
-    <script>
-        function nacionalidade(){
-            var txt_v = window.document.getElementById("itxt")
-            
-
-            if (txt_v =="BRASIL"){
-                window.alert("Você tem nacionalidade brasileira")
-            } else {
-                window.alert("Você tem nacionalidade estrangeira")
-            }
+    <title>Desafio</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.2em;
+            font-weight: 500;
         }
 
+        p{
+            display: inline-block;
+        }
+
+        #nacionalidade{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Nacionalidade
+    </h1>
+        <div class="form">
+            <label for="itxt">De qual país você é?</label>
+            <input type="text" name="txt" id="itxt" required autocomplete="off">
+            <input type="button" value="enviar" onclick="analisar()">
+        </div>
+
+        <p>Você é: </p>
+        <p id="nacionalidade"></p>
+
+    <script>
+        function analisar(){
+            var txt_v = document.getElementById("itxt")
+            var txt_resp = txt_v.value.toUpperCase()
+            var nac = document.getElementById("nacionalidade")
+
+            if (txt_resp =="BRASIL"){
+                nac.innerHTML= "<strong>Brasileiro</strong>"
+            } else{
+                nac.innerHTML= "<strong>Estrangeiro</strong>"
+            }
+        }
     </script>
 
 </body>
