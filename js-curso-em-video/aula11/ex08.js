@@ -1,3 +1,5 @@
+//CONDIÇÃO
+
 var vel = 70
 console.log(`Você está dirigindo à ${vel}km/h`)
 if (vel>60){

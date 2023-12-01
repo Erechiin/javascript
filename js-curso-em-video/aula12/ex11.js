@@ -1,3 +1,5 @@
+//CONDIÇÃO
+
 var idade = 78
 console.log(`Você tem ${idade} anos`)
 
