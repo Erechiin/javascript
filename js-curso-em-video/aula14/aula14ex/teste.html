@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            display: inline-block;
+        }
+
+        .emoji::after{
+            content: "\1F449";
+        }
+    </style>
+</head>
+<body>
+    <label for="i">inicio:</label>
+    <input type="number" name="inicio" id="i">
+    <label for="f">fim:</label>
+    <input type="number" name="fim" id="f">
+    <label for="p">passo:</label>
+    <input type="number" name="passo" id="p">
+
+    <input type="button" value="enviar" onclick="analisar()" id="botao">
+
+    <div>
+        <p id="resultado">resultado aqui!</p>
+    </div>
+
+    <script>
+        function analisar(){
+            let inicio = document.getElementById('i').value
+            let fim = document.getElementById('f').value
+            let passo = document.getElementById('p').value
+            let resultado = document.getElementById('resultado')
+            let botao = document.getElementById('botao')
+
+            console.log(inicio)
+            console.log(fim)
+            console.log(passo)
+            console.log(botao)
+
+            resultado.innerHTML = `<p class="emoji">${inicio}</p>`+`<p class="emoji">${fim}</p>`+`<p class="emoji">${passo}</p>`
+        }
+    </script>
+    
+</body>
+</html>

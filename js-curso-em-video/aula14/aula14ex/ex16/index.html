@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horário</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>
+            Vamos contar
+        </h1>
+    </header>
+    <main>
+        <section>
+            <div id="respostas">
+                <div class="inicio">
+                    <label for="i_ini">Início: </label>
+                    <input type="number" name="ini" id="i_ini">
+                </div>
+
+                <div class="final">
+                    <label for="i_fim">Fim: </label>
+                    <input type="number" name="fim" id="i_fim">
+                </div>
+
+                <div class="passo">
+                    <label for="i_pas">Passos: </label>
+                    <input type="number" name="pas" id="i_pas">
+                </div>
+
+                <div class="botao">
+                    <input type="button" value="contar" onclick="contagem()" id="botao">
+                </div>
+            </div>
+            <div id="resultado">
+                <p id="prep">
+                    Preparando a contagem...
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>
+           &copy; <a href="https://www.youtube.com/@CursoemVideo" target="_blank" rel="external">CursoemVideo</a>
+        </p>
+    </footer>
+ 
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -29,3 +29,9 @@ function xandão(){
 }
 
 xandão()
+
+
+function bla(){
+    var e = document.getElementById('edu')
+    e.innerText = 'gay'
+}
