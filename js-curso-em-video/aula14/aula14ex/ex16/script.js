@@ -11,12 +11,20 @@ function contagem(){
     console.log(fim)
     console.log(passo)
     console.log(resultado)
+    console.log(`TIPO: ${typeof(passo)}`)
 
     resultado.innerHTML = ""
-    while(inicio<fim){
-        console.log(`num: ${inicio}`)
-        resultado.innerHTML += `<p class="emoji_i">${inicio}</p>`
-        inicio += passo
+
+    if(passo <=0 || inicio > fim || typeof passo != 'number'){
+        resultado.innerHTML += `<p>Impossível contar!</p>`
+        resultado.innerHTML += `<p>Insira os dados e tente novamente.</p>`
+    }else{
+        while(inicio<fim){
+            console.log(`num: ${inicio}`)
+            resultado.innerHTML += `<p class="emoji_i">${inicio}</p>`
+            inicio += passo
+        }
+        resultado.innerHTML += `<p class="emoji_f">${fim}</p>`
     }
-    resultado.innerHTML += `<p class="emoji_f">${fim}</p>`
+
 }
