@@ -19,14 +19,14 @@ function contagem(){
         resultado.innerHTML += `<p>Impossível contar!</p>`
         resultado.innerHTML += `<p>Insira os dados e tente novamente.</p>`
     }else{
-        if(inicio<fim){
+        if(inicio<fim){ //Contagem Crescente
             while(inicio<fim){
                 console.log(`num: ${inicio}`)
                 resultado.innerHTML += `<p class="emoji_i">${inicio}</p>`
                 inicio += passo
             }
             resultado.innerHTML += `<p class="emoji_f">${fim}</p>`
-        } else {
+        } else { //Contagem Regressiva
             while(inicio>fim){
                 console.log(`num: ${inicio}`)
                 resultado.innerHTML += `<p class="emoji_i">${inicio}</p>`

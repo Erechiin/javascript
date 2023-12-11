@@ -1,14 +1,21 @@
 function gerar(){
-    let num = Number(document.getElementById('inmbr').value)
+    let num = document.getElementById('inmbr').value
     let tab = document.getElementById('itab')
     let res
 
     console.log(num)
     console.log(tab)
 
-    tab.innerHTML = ''
-    for(c=0;c<=10;c++){
-        res = num*c
-        tab.innerHTML += `${num} x ${c} = ${res} `
+    if(num.length == 0){
+        window.alert('[Erro] insira os dados novamente!')
+    } else{
+        tab.innerHTML = ''
+        num = Number(num)
+        for(c=0;c<=10;c++){
+            res = num*c
+            let item = document.createElement('option')
+            item.text = `${num} x ${c} = ${res}`
+            tab.appendChild(item)
+        }
     }
 }

@@ -9,6 +9,16 @@ body{
     background-color: rgb(0, 102, 255);
 }
 
+a{
+    color: inherit;
+}
+
+footer p:hover{
+    transition: all 0.2s;
+    transform: translate(-2px, -2px);
+    text-shadow: 2px 2px 5px black;
+}
+
 header,footer{
     padding: 10px;
     text-align: center;
