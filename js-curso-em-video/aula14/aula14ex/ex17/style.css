@@ -21,7 +21,6 @@ main{
 }
 
 section{
-    text-align: center;
     background-color: white;
     width: 60%;
     border-radius: 10px;
@@ -29,15 +28,14 @@ section{
     padding: 10px;
 }
 
-#imagem{
-    border-radius: 50%;
-    box-shadow: -2px 1px 5px rgba(0, 0, 0, 0.26);
-    height: 300px;
-    width: 300px;
-    margin: 10px auto;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+#pergunta{
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+}
+
+#itab{
+    padding: 2px;
 }
 
 footer{

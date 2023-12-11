@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horário</title>
+    <title>tabuada</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body onload="carregar()">
+<body>
     <header>
         <h1>
-            título
+            Tabuada
         </h1>
     </header>
     <main>
         <section>
-            <div id="texto">
+            <div id="pergunta">
+                <div class="input">
+                    <label for="inmbr">Número:</label>
+                    <input type="number" name="nmbr" id="inmbr">
+                </div>
+                <div class="botao">
+                    <input type="button" value="Gerar tabuada" onclick="gerar()">
+                </div>
             </div>
-            <div id="imagem">
 
+            <div id="tabuada">
+                <textarea name="tab" id="itab" cols="9" rows="10" style="resize: none; font-size: 1.2em;" placeholder="Digite um texto acima"></textarea>
             </div>
         </section>
     </main>
