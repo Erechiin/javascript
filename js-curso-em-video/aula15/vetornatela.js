@@ -21,3 +21,8 @@ for( let i in valores){
 //--> Procurando valores
 
 console.log(valores.indexOf(9))
+
+// --> Ordenando
+    // valores.sort()
+    valores.sort(function(a, b){return a-b})
+    console.log(valores)
