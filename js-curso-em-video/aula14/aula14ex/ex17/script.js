@@ -15,6 +15,7 @@ function gerar(){
             res = num*c
             let item = document.createElement('option')
             item.text = `${num} x ${c} = ${res}`
+            item.value = `tab${c}`
             tab.appendChild(item)
         }
     }
