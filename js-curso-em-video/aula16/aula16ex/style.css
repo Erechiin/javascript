@@ -45,13 +45,28 @@ section{
     display: inline-block;
 }
 
+#inum{
+    padding-left: 2px;
+}
+
 select{
     width: 170px;
     margin-bottom: 5px;
+    padding: 2px;
 }
 
 .botao input{
     padding: 2px;
+}
+
+.final{
+    padding: 5px;
+    font-size: 1.1em;
+    line-height: 1.5em;
+}
+
+.final span{
+    text-decoration: underline;
 }
 
 footer{

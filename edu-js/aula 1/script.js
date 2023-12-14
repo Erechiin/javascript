@@ -22,6 +22,7 @@ let objeto = {
     valorant:'ruim',
     lol :0
 }
+    //objeto.valorant --> valorant é a chave
 console.log(typeof objeto)
 
 function xandão(){
@@ -35,3 +36,5 @@ function bla(){
     var e = document.getElementById('edu')
     e.innerText = 'gay'
 }
+
+const adada = (n1,n2) => {return n1 + n2}
