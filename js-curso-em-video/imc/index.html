@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>IMC</h1>
+    </header>
+
+    <main>
+        <div class="inputs">
+            <div class="form">
+                <div class="altura">
+                    <label for="ihigh">Altura: </label>
+                    <input type="number" name="high" id="ihigh">
+                </div>
+
+                <div class="peso">
+                    <label for="iweigth">Peso: </label>
+                    <input type="number" name="weigth" id="iweigth">
+                </div>
+            </div>
+
+            <div class="botao">
+                <input type="button" value="Calcular" onclick="calcular()">
+                <input type="button" value="Limpar" onclick="limpar()">
+            </div>
+        </div>
+
+        <div class="resultado" id="ires">
+            <p>Insira os valores acima para calcular seu IMC!</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            Criado por Erik Rodrigues
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
