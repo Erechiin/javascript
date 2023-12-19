@@ -39,7 +39,7 @@ main .inputs{
     width: 40%;
 }
 
-.inputs input:hover, label:hover{
+.inputs input:hover, label:hover, .botao input:hover{
     cursor: pointer;
 }
 
@@ -58,5 +58,9 @@ main .inputs{
 }
 
 .resultado{
+    padding: 10px;
+}
+
+#historico{
     padding: 10px;
 }
