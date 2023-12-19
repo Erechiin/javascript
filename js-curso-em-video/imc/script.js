@@ -1,23 +1,26 @@
+//Var globais
 let altura=document.getElementById('ihigh')
 let peso=document.getElementById('iweigth')
 let res = document.getElementById('ires')
-
 let hist_values = document.getElementById('historico')
 let lista = []
 
+//Função de Calcular
 const calcular = () =>{
     let altura_v = Number(altura.value)
-
     let peso_v = Number(peso.value)
 
     if(altura_v <= 0 || peso_v <= 0){
+        //Erro
         window.alert('Dados incompletos, tente novamente')
         res.innerHTML = '<p>Insira os valores acima para calcular seu IMC!</p>'
     } else{
+        //Calculo de IMC
         let res_v = peso_v/(altura_v)**2
         res_v = res_v.toFixed(2)
         console.log(res_v)
 
+        //Função de classificar
         const classificaçao = () =>{
             if(res_v<18.5){
                 return 'magreza'
@@ -32,8 +35,7 @@ const calcular = () =>{
             }
         }
 
-        // classificaçao()
-        
+        //Classificar
         res.innerHTML = `<p>IMC: ${res_v}</p>` + `<p>Classificação: ${classificaçao()}</p>`
         lista.push(res_v)
     }
