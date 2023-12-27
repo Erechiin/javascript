@@ -1,3 +1,5 @@
+//Array: Objeto global usado na construção de arrays(objetos semelhantes a listas)
+
 let num = [1,7,2,30,33,29,31,304,120,0,303,]
 console.log(`os números são: ${num}`)
 console.log(`Esse é o numero: ${num[0]}`)
