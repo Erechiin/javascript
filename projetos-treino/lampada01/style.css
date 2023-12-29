@@ -1,7 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+
 body{
     text-align: center;
 }
 
 #bt-resetar{
     display: none;
+}
+
+button{
+    font-size: 1.1em;
+    padding: 5px 7px;
 }
