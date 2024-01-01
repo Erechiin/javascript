@@ -1,0 +1,12 @@
+{
+    "nome": "alexandre",
+    "idade": 32,
+    "esta_trabalhando": true,
+    "detalhes_profissão": {
+        "profissão": "programador",
+        "salário": 5000
+    },
+    "hobbies": [134, "blablabla", false, null],
+
+    "OBS": "Também é permitido mandar um array de objetos, o JSON vai entender que são mais de 1 informações diferente"
+}
