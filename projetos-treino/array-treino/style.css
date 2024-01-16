@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: darkgray;
+}
+
+.divisao{
+    background-color: black;
+    color: white;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+main{
+    padding: 5px;
+}
+
+input{
+    background-color: lightgray;
+}
+
