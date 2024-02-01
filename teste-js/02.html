@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titulo</title>
+    <style>
+    </style>
+</head>
+<body>
+    <header>
+        <h1>teste de form</h1>
+    </header>
+    <main>
+        <form method="get" id="formulario">
+            <label for="itext">Escreva:</label>
+            <input type="text" name="text" id="itext" autofocus>
+
+            <!-- <input type="button" value="Enviar" onclick="add()" id="botao"> -->
+            <input type="submit" value="enviar" onclick="add()">
+        </form>
+        <ul id="listinha"></ul>
+    </main>
+
+    <script>
+        let f = document.getElementById('formulario')
+        const lista = []
+        let corpo = document.body
+        let ul = document.getElementById('listinha')
+
+        const add = () =>{
+            event.preventDefault()
+            let item = document.getElementById('itext').value
+            lista.push(item)
+            // corpo.innerHTML += `<p>${lista}<p>`
+
+            function criarLi(){
+                let li = document.createElement('li')
+                for(let valorLista of lista){
+                    li.textContent = `${valorLista}`
+                    ul.appendChild(li)
+                    console.log(li)
+                }
+            }
+            criarLi()
+        }
+    </script>
+</body>
+</html>
