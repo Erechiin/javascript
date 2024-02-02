@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+:root{
+    --corBorda:brown;
+    --corSombra:rgba(161, 78, 0, 0.582);
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -12,7 +17,7 @@ html{
 }
 
 body{
-    background-color: rgb(107, 107, 107);
+    background-color: rgb(0, 0, 0);
 }
 
 .slideContainer{
@@ -28,16 +33,7 @@ body{
     width: 50vw;
     height: 50vh;
     border-radius: 10px;
-    box-shadow: 0px 0px 30px rgba(2, 175, 255, 0.582), 0px 2px 3px rgb(0, 81, 255),0px -2px 3px rgb(0, 81, 255), 2px 0px 3px rgb(0, 81, 255), -2px 0px 3px rgb(0, 81, 255);
-}
-
-.containerItens{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-
-    display: flex;
+    box-shadow: 0px 0px 40px var(--corSombra), 0px 2px 3px var(--corBorda),0px -2px 3px var(--corBorda), 2px 0px 3px var(--corBorda), -2px 0px 3px var(--corBorda);
 }
 
 .actionButton{
@@ -50,7 +46,7 @@ body{
     padding: 0px 5px;
     font-weight: bold;
     font-size: 20px;
-    color: rgba(255, 255, 255, 0.527);
+    color: rgba(255, 255, 255, 0.582);
 
     transition: all 0.3s;
     user-select: none;
@@ -67,15 +63,32 @@ body{
     font-size: 30px;
     cursor: pointer;
     color: white;
-    background-color: rgba(255, 255, 255, 0.096);
+    background-color: rgba(0, 0, 0, 0.63);
+}
+
+.containerItens{
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    border-radius: 10px;
+
+    display: flex;
+    overflow: hidden;
 }
 
 .item{
-    width: 100%;
-    height: 100%;
+    width: 50vw;
+    height: 50vh;
+    border-radius: 10px;
+    transition: all 0.5s;
 }
 
 .item img{
-    width: 100%;
-    height: 100%;
+    width: 50vw;
+    height: 50vh;
+    border-radius: 10px;
+}
+
+.item:first-child{
+    margin-left: -100%;
 }
