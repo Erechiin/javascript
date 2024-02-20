@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            height: 100vh;
+        }
+
+        body{
+            background-color: black;
+            color: white;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button{
+            background-color: black;
+            border: 1px solid white;
+            color: white;
+            border-radius: 5px;
+            height: 50px;
+            width: 70px;
+            font-size: 2em;
+        }
+
+        button:hover{
+            animation: luz;
+            animation-duration: 0.5s;
+        }
+
+        @keyframes luz{
+            0%{box-shadow: none;}
+            25%{box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.250);}
+            50%{box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.500);}
+            75%{box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.750);}
+            100%{box-shadow: 0px 0px 40px white;}
+        }
+    </style>
+</head>
+<body>
+    <button onclick="funsao()">luz</button>
+    <script>
+        const a = document.querySelector('button')
+        function acionar(){
+            a.style.boxShadow = 'box-shadow: 0px 0px 40px white;'
+        }
+
+        function funsao(){
+            setTimeout(acionar, 500)
+        }
+    </script>
+</body>
+</html>
