@@ -1,7 +1,9 @@
-//ajeitar o problema do '.'
-//tenta fazer uma variavel resultado que armazena o valor do current operator pra deixar mais organizado e conseguir resetar o current operator sem problema
-
+//ajeita o calculo
 const display = document.querySelector('.display')
+const displayCima = document.querySelector('.operationView')
+const historySec = document.querySelector('.historySection')
+const historybt = document.querySelectorAll('.material-symbols-outlined')
+const itens = document.querySelector('#itens')
 const numberButtons = document.querySelectorAll('[id*=tecla]')
 const operatorButtons = document.querySelectorAll('[id*=operador]')
 const historyResults = []
@@ -12,6 +14,7 @@ const operatorFunctionsObject = {
         displayReset()
         currentNumber.length = 0
         currentOperation.length = 0
+        displayCima.style.display = 'none'
     },
     c: () =>{
         currentNumber.pop()
@@ -34,12 +37,11 @@ const operatorFunctionsObject = {
                     currentOperation.push(Number(currentNumber.join('')))
                     operaçãoEqual()
                 }
-                console.log('caso 2')
                 break
             case '1':
             case '0':
-                console.log('caso 0 ou 1')
                 displayReset()
+                displayCima.style.display = 'none'
                 break
             default:
                 if(currentNumber.length == 0){
@@ -49,45 +51,61 @@ const operatorFunctionsObject = {
                     currentOperation.push(Number(currentNumber.join('')))
                     operaçãoEqual()
                 }
-                console.log('caso default')
-                console.log(currentOperation.length)
                 break
         }
         function operaçãoEqual(){
-            currentNumber.length = 0
-            let index = null
-            console.log(currentOperation)
-            console.log(currentNumber)
+            displayCima.innerHTML = currentOperation.join('')
+            let resultado = calculateResult()
 
+            //guarda o resultado e mostra na tela
+            historyResults.push(resultado);
+            display.innerHTML = resultado;
+
+            //Reset currentOperation e currentNumber
+            currentOperation.length = 0;
+            currentNumber.length = 0;
+        }
+
+        function calculateResult(){
             while(currentOperation.length>1){
-                if(currentOperation.includes('*')){
-                    index = currentOperation.indexOf('*')
-                    currentOperation[index] = operatorFunctionsObject.multiplication(currentOperation[index - 1], currentOperation[index + 1])
-                    currentOperation.splice(index-1,3, currentOperation[index])
-                    console.log(currentOperation)
+                if(currentOperation.includes('*') && currentOperation.includes('/')){
+                    let multiplicationIndex = currentOperation.indexOf('+')
+                    let divisionIndex = currentOperation.indexOf('-')
+                    switch(multiplicationIndex<divisionIndex){
+                        case true:
+                            calculateResultLogica('*', 'multiplication')
+                            break
+                        case false:
+                            calculateResultLogica('/', 'division')
+                            break
+                        default:
+                            break
+                    }
+                } else if(currentOperation.includes('*')){
+                    calculateResultLogica('*', 'multiplication')
                 } else if(currentOperation.includes('/')){
-                    index = currentOperation.indexOf('/')
-                    currentOperation[index] = operatorFunctionsObject.division(currentOperation[index - 1], currentOperation[index + 1])
-                    currentOperation.splice(index-1,3, currentOperation[index])
-                    console.log(currentOperation)
+                    calculateResultLogica('/', 'division')
                 } else if(currentOperation.includes('%')){
-                    index = currentOperation.indexOf('%')
-                    currentOperation[index] = operatorFunctionsObject.percentage(currentOperation[index - 1], currentOperation[index + 1])
-                    currentOperation.splice(index-1,3, currentOperation[index])
-                    console.log(currentOperation)
+                    calculateResultLogica('%', 'percentage')
+                } else if(currentOperation.includes('+') && currentOperation.includes('-')){
+                    let plusIndex = currentOperation.indexOf('+')
+                    let minusIndex = currentOperation.indexOf('-')
+                    switch(plusIndex<minusIndex){
+                        case true:
+                            calculateResultLogica('+', 'plus')
+                            break
+                        case false:
+                            calculateResultLogica('-', 'minus')
+                            break
+                        default:
+                            break
+                    }
                 } else if(currentOperation.includes('+')){
-                    index = currentOperation.indexOf('+')
-                    currentOperation[index] = operatorFunctionsObject.plus(currentOperation[index - 1], currentOperation[index + 1])
-                    currentOperation.splice(index-1,3, currentOperation[index])
-                    console.log(currentOperation)
+                    calculateResultLogica('+', 'plus')
                 } else{
-                    index = currentOperation.indexOf('-')
-                    currentOperation[index] = operatorFunctionsObject.minus(currentOperation[index - 1], currentOperation[index + 1])
-                    currentOperation.splice(index-1,3, currentOperation[index])
-                    console.log(currentOperation)
+                    calculateResultLogica('-', 'minus')
                 }
             }
-
             let teste = currentOperation.toString()
             switch(teste.includes('.')){
                 case true:
@@ -97,11 +115,16 @@ const operatorFunctionsObject = {
                 default:
                     break
             }
+            return currentOperation[0]
+        }
 
-            historyResults.push(currentOperation)
-            display.innerHTML = historyResults[historyResults.length-1]
-            console.log(historyResults.length-1)
-            currentOperation.length = 0
+        //Lógica por trás do calculateResult
+        function calculateResultLogica (operador, funcao){
+            let index = null
+            index = currentOperation.indexOf(operador)
+            currentOperation[index] = operatorFunctionsObject[funcao](currentOperation[index - 1], currentOperation[index + 1])
+            currentOperation.splice(index-1,3, currentOperation[index])
+            console.log(currentOperation)
         }
     },
     percentage: (a, b) =>{
@@ -120,7 +143,34 @@ const operatorFunctionsObject = {
         return a + b
     }
 }
-let resultado = null
+
+const historyFunc = (event)=>{
+    let evento = event.target.id
+    switch(evento){
+        case 'historyOpen':
+            criarElemento()
+            historySec.style.display = 'block'
+            break
+        case 'historyClose':
+            historySec.style.display = 'none'
+            break
+        default:
+            break
+    }  
+    function criarElemento(){
+        itens.innerHTML = ''
+        function auxiliar(el){
+            console.log(`el:${el}`)
+            console.log(historyResults)
+            let li = document.createElement('li')
+            li.textContent = el
+            itens.appendChild(li)
+        }
+        for(i in historyResults){
+            auxiliar(historyResults[i])
+        }
+    }
+}
 
 //analisa se o ultimo elemento é um operador (NAO TA SENDO USADO AINDA)
 const isAnOperator = () =>{
@@ -188,6 +238,8 @@ const operatorFunction = (event) =>{
             }
             //Após tudo isso, chama a função de analiseOperador
             analiseOperador()
+            displayCima.style.display = 'flex'
+            displayCima.innerHTML = currentOperation.join('')
             console.log(currentOperation)
             break
         }
@@ -217,5 +269,9 @@ const numberFunction = (event) =>{
 numberButtons.forEach(
     numero => numero.addEventListener('click', numberFunction)
 )
-
-operatorButtons.forEach(operador => operador.addEventListener('click', operatorFunction))
+operatorButtons.forEach(
+    operador => operador.addEventListener('click', operatorFunction)
+    )
+historybt.forEach(
+    button => button.addEventListener('click', historyFunc)
+    )

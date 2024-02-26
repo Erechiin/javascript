@@ -5,11 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <div class="calculadora">
-        <div class="display">
-            0
+        <div class="displayWrapper">
+            <div class="upDisplay">
+                <div class="history">
+                    <span class="material-symbols-outlined" id="historyOpen"> history</span>
+                </div>
+                <div class="operationView"></div>
+            </div>
+            <div class="display">
+                0
+            </div>
         </div>
         <div id="calcBotoes">
             <button class="bt" id="operador_CE">CE</button>
@@ -32,6 +41,12 @@
             <button class="bt" id="tecla0">0</button>
             <button class="bt" id="teclaponto">.</button>
             <button class="bt" id="operador_equal">=</button>
+        </div>
+    </div>
+    <div class="historySection">
+        <div class="upsec"><span class="material-symbols-outlined" id="historyClose"> history</span></div>
+        <div class="itenssec">
+            <ul id="itens"></ul>
         </div>
     </div>
 
