@@ -46,4 +46,4 @@ const calcularTempo = () =>{
     //Math.floor() retorna o valor inteiro
 }
 
-contagemRegressiva(60*20)
+contagemRegressiva(calcularTempo())
