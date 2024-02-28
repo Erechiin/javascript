@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            height: 100vh;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+
+        .container {
+            width: 200px;
+            height: 300px;
+            border: 1px solid rgb(0, 0, 0);
+            border-top: 10px solid black;
+            overflow: hidden; /* Escondendo o overflow para evitar que o conteúdo seja exibido além da borda */
+            position: relative;
+        }
+
+        .div {
+            width: 200px;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #um {
+            background-color: rgb(235, 0, 0);
+            box-shadow: inset 0px 0px 20px black;
+            z-index: 1;
+        }
+
+        #dois {
+            background-color: aqua;
+            z-index: 2;
+            box-shadow: inset 0px 4px 3px rgba(0, 0, 0, 0.575);
+            filter: drop-shadow(0px 10px 2px rgba(0, 0, 0, 0.432));
+            transition: transform 2s; /* Definindo apenas uma transição para a propriedade transform */
+        }
+
+        .subir {
+            transform: translateY(-100%);
+        }
+
+        .descer {
+            transform: translateY(0%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="main">
+        <div class="div" id="um"></div>
+        <div class="div" id="dois"></div>
+    </div>
+
+    <script>
+        const blue = document.getElementById('dois');
+        let animating = false;
+
+        function subir() {
+            if (!animating) {
+                animating = true;
+                blue.classList.add('subir');
+                blue.classList.remove('descer');
+                setTimeout(() => { animating = false; }, 2000);
+            }
+        }
+
+        function descer() {
+            if (!animating) {
+                animating = true;
+                blue.classList.add('descer');
+                blue.classList.remove('subir');
+                setTimeout(() => { animating = false; }, 2000);
+            }
+        }
+
+        document.getElementById('main').addEventListener('click', function() {
+            if (blue.classList.contains('subir')) {
+                descer();
+            } else {
+                subir();
+            }
+        });
+    </script>
+</body>
+</html>
