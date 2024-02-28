@@ -1,0 +1,80 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    background-image: url('img/bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, 0.507);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 40px;
+}
+
+.title h1{
+    font-size: 6em;
+    text-shadow: -5px 5px 10px rgba(0, 0, 0, 0.603);
+}
+
+.title p{
+    text-decoration: underline;
+}
+
+.countdown{
+    text-align: center;
+    display: flex;
+    width: 60vw;
+    justify-content: space-around;
+    /* gap: 70px; */
+    margin: 80px;
+}
+
+.countdown h1{
+    font-size: 5em;
+    padding: 5px;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.336),
+    0px 0px 10px rgba(255, 255, 255, 0.336),
+    0px 0px 10px rgba(255, 255, 255, 0.39),
+    0px 0px 20px rgba(255, 238, 1, 0.473);
+}
+
+.countdown p{
+    font-size: 0.8em;
+}
+
+.button{
+    margin: 80px auto;
+    width: fit-content;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.8em;
+    background-color: rgba(255, 255, 255, 0.753);
+    color: rgb(0, 0, 0);
+    transition: all .2s;
+}
+
+.button:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+}
