@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 
+        isso aqui é um teste de Criptografia usando a tabela ASCII 
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>criptografia</title>
+</head>
+<body>
+    <form action="" method="get">
+        <label for="getData">Digite seu texto:</label>
+        <input type="text" id="getData" autofocus="true">
+        <input type="submit" value="enviar">
+    </form>
+    <p style="font-size: 1.2em; font-weight: bold;">texto encriptado:</p>
+    <div id="output"></div>
+
+    <script>
+        'use strict'
+        const inputData = document.querySelector('#getData')
+        const output = document.querySelector('#output')
+        const submitBt = document.querySelector('input[type=submit]')
+        
+        const metade = (textoInvertido)=>{
+            let txt = String(textoInvertido)
+            let resultadoMetade = ''
+            let txtMetadeUm = null
+            let txtMetadeDois = null
+            let tamanho = txt.length
+            let metade = null
+
+            if(tamanho % 2 === 0){
+                metade = tamanho/2
+                txtMetadeDois = txt.slice(metade)
+                txtMetadeUm = txt.slice(0, metade)
+            } else{
+                metade = (tamanho + 1) / 2
+                txtMetadeDois = txt.slice(metade-1)
+                txtMetadeUm = txt.slice(0, metade-1)
+            }
+            resultadoMetade = txtMetadeUm
+
+            for(let i = 0; i<txtMetadeDois.length;i++){
+                let decimal = txtMetadeDois.charCodeAt(i)
+                let caracteres = String.fromCharCode(decimal-1)
+                resultadoMetade += caracteres
+            }
+            output.innerHTML = resultadoMetade
+        }
+
+        //slice (index inicial, index final)
+            // no caso de ter apenas 1 valor, ele vai pegar desse valor até o fim. 
+            // Ex: slice (2) --> começa no indice 2 e vai ate o final.
+            // Ex: slice (-4) --> começa no indice -4 (ou seja, o 5° elemento da direita pra esquerda) e vai ate o final.
+
+        const inverter = (textoDeslocado)=>{
+            let txtArr = String(textoDeslocado).split('')
+            let inverterTxt = txtArr.reverse()
+            let txt = inverterTxt.join('')
+            metade(txt)
+        }
+
+        const deslocarTres = (texto) =>{
+            let resultado = ""
+            let txt = String(texto)
+
+            for(let i = 0; i<txt.length;i++){
+                let charactere = txt.charAt(i)
+                let decimal = txt.charCodeAt(i)
+                if(decimal>=65 && decimal<=90 || decimal>=97 && decimal<=122){
+                    let novoDecimal = decimal + 3
+                    let novoCaractere = String.fromCharCode(novoDecimal)
+                    resultado += novoCaractere
+                } else{
+                    let novoDecimal = decimal
+                    let novoCaractere = String.fromCharCode(novoDecimal)
+                    resultado += novoCaractere
+                }
+            }
+            inverter(resultado)
+        }
+
+        //String.fromCharCode(*aqui vai o decimal*) --> transforma o decimal no seu correspondente.
+        //*variavel*.charCodeAt(*index*) --> pega o valor decimal daquele caractere.
+
+        const enviar = ()=>{
+            event.preventDefault()
+            let dataValue = inputData.value
+            window.alert(dataValue)
+            deslocarTres(dataValue)
+        }
+
+        submitBt.addEventListener('click', enviar)
+    </script>
+</body>
+</html>
