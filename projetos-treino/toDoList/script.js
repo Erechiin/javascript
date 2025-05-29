@@ -13,9 +13,11 @@ const metodos = {
         createButton.innerText = "excluir"
         return createButton
     },
-    criarCheckbox:()=>{
+    criarCheckbox:(index)=>{
         let createCheck = document.createElement("input")
         createCheck.setAttribute("type","checkbox")
+        createCheck.setAttribute("class","selecao")
+        createCheck.setAttribute("data-id-dois", index)
         return createCheck
     },
     criarP:(texto)=>{
@@ -33,7 +35,7 @@ const metodos = {
         if(itemValue.length == 0){
             item.setAttribute("placeholder", "Digite um valor válido")
         } else{
-            metodos.listaItens.push(itemValue)
+            metodos.listaItens.push({tarefa:itemValue,status:""})
             item.value = ""
             item.setAttribute("placeholder", "Item a ser adicionado")
             metodos.mostrarLista()
@@ -49,6 +51,9 @@ const metodos = {
             metodos.mostrarLista() 
         }
     },
+    itemConcluido:(evento)=>{
+        const id = evento.target.dataset.id-dois
+    },
     mostrarLista:()=>{ //atualiza a lista, os data-id dos botões e mostra os itens na ul
         let listaUl = document.getElementById("lista")
         if(listaUl.innerHTML != ""){
@@ -62,7 +67,7 @@ const metodos = {
             
             li.appendChild(metodos.criarCheckbox())
             
-            li.appendChild(metodos.criarP(itemMostrar))
+            li.appendChild(metodos.criarP(itemMostrar.tarefa))
             
             li.appendChild(metodos.criarbttn(index)) //manda o index do item na lista como parametro pra função criarbttn(), que define esse index como data-id do botão
 
@@ -70,10 +75,17 @@ const metodos = {
         }
     }
 }
+// DELEGAÇÃO DE EVENTOS
+
 const pai = document.querySelector("#lista")
 //addEventListener para quando ouver um click dentro da ul
 pai.addEventListener('click', (event)=>{
     metodos.removerItem(event)
+})
+pai.addEventListener('change', (event)=>{
+    if(event.target.classList.contains('selecao')){
+        metodos.itemConcluido(event)
+    }
 })
 
 //addEventListener para quando der enter no formulario
