@@ -14,9 +14,6 @@ body{
 .section{
     margin-bottom: 20px;
 }
-.shadowbox{ /*!!!!!!!!!!!!!!!*/
-    box-shadow: 10px 10px 10px black
-}
 header{
     width: 45%;
     margin: 0 auto;
@@ -34,6 +31,7 @@ main{
     overflow-x: hidden;
     width: 50%;
     margin: 0 auto;
+    padding: 2px;
 }
 main #inome{
     background-color: #ffde7b;
@@ -52,12 +50,20 @@ main #inome{
     display: flex;
     align-items: center;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid black;
+    margin-bottom: 20px;
+    /* border: 1px solid black; */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.795);
+    /* transition: all 0.2s ease-out; */
 }
-#lista li.concluido{
+#lista li:hover{
+    cursor: pointer;
     background-color: #262626;
     color: #F2C12E;
+}
+
+#lista li.concluido{
+    background-color: #262626;
+    color: #ac8a24;
 }
 #lista li p{
     width: 80%;
@@ -83,6 +89,9 @@ form{
     background-color: #ffde7b;
     padding: 10px 15px;
 }
+input[type="checkbox"]:hover{
+    cursor: pointer;
+}
 
 label{
     font-size: 2em;
@@ -91,4 +100,10 @@ label{
 button{
     width: 70px;
     height: 30px;
+    background-color: rgb(253, 253, 253);
+}
+button:hover{
+    cursor: pointer;
+    border: 2px solid lightblue;
+    font-weight: bold;
 }
