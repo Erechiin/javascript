@@ -49,14 +49,30 @@ main #inome{
 }
 
 #lista li{
-    display: block;
-    padding-left: 10px;
-    list-style-position: inside;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
     border: 1px solid black;
 }
+#lista li.concluido{
+    background-color: #262626;
+    color: #F2C12E;
+}
 #lista li p{
-    display: inline-block;
+    width: 80%;
+    overflow-x: hidden;
+    font-size: 2em;
+    font-weight: 500;
     margin-right: 20px;
+    margin-left: 20px;
+}
+#lista li p.concluido{
+    text-decoration: line-through;
+}
+#lista input{
+    width: 30px;
+    height: 30px;
 }
 
 form{

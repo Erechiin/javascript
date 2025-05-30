@@ -17,7 +17,7 @@ const metodos = {
         let createCheck = document.createElement("input")
         createCheck.setAttribute("type","checkbox")
         createCheck.setAttribute("class","selecao")
-        createCheck.setAttribute("data-id-dois", index)
+        createCheck.setAttribute("data-idDois", index)
         return createCheck
     },
     criarP:(texto)=>{
@@ -37,7 +37,7 @@ const metodos = {
         } else{
             metodos.listaItens.push({tarefa:itemValue,status:""})
             item.value = ""
-            item.setAttribute("placeholder", "Item a ser adicionado")
+            item.setAttribute("placeholder", "Digite algo e tecle enter para enviar")
             metodos.mostrarLista()
         }
     },
@@ -52,7 +52,20 @@ const metodos = {
         }
     },
     itemConcluido:(evento)=>{
-        const id = evento.target.dataset.id-dois
+        if(evento.target.classList.contains('selecao')){
+            const id = evento.target.dataset.iddois
+            const item = metodos.listaItens[id]
+            const itemStatus = item.status
+            switch(itemStatus){
+                case "concluido":
+                    item.status = ""
+                    break
+                default:
+                    item.status = "concluido"
+                    break
+            }
+            metodos.mostrarLista()
+        }
     },
     mostrarLista:()=>{ //atualiza a lista, os data-id dos botões e mostra os itens na ul
         let listaUl = document.getElementById("lista")
@@ -63,15 +76,34 @@ const metodos = {
         metodos.listaItens.forEach(mostrar)
 
         function mostrar(itemMostrar, index){
-            let li = metodos.criarLi()
+            const li = metodos.criarLi()
             
-            li.appendChild(metodos.criarCheckbox())
+            li.appendChild(metodos.criarCheckbox(index))
             
             li.appendChild(metodos.criarP(itemMostrar.tarefa))
             
             li.appendChild(metodos.criarbttn(index)) //manda o index do item na lista como parametro pra função criarbttn(), que define esse index como data-id do botão
-
+            
             listaUl.appendChild(li)
+            
+            const listaUlFilhos = listaUl.children
+            const listaLi = listaUlFilhos[index]
+            const listaLiCheck = listaLi.children[0]
+            const ListaLiP = listaLi.children[1]
+            switch(itemMostrar.status){
+                case "concluido":
+                    listaLi.classList.toggle("concluido")
+                    listaLiCheck.checked = true
+                    ListaLiP.classList.toggle("concluido")
+                    break
+                default:
+                    if(listaLi.classList.contains("concluido")){
+                        listaLi.classList.toggle("concluido")
+                        ListaLiP.classList.toggle("concluido")
+                    }
+                    listaLiCheck.checked = false
+                    break
+            }
         }
     }
 }
@@ -83,9 +115,7 @@ pai.addEventListener('click', (event)=>{
     metodos.removerItem(event)
 })
 pai.addEventListener('change', (event)=>{
-    if(event.target.classList.contains('selecao')){
-        metodos.itemConcluido(event)
-    }
+    metodos.itemConcluido(event)
 })
 
 //addEventListener para quando der enter no formulario
@@ -96,8 +126,8 @@ form.addEventListener('submit', (event)=>{
 })
 
 //addEventListener para quando apertar no botão de enviar o item
-const enviar = document.querySelector("#enviar")
-enviar.addEventListener('click', (event)=>{
-    event.preventDefault()
-    metodos.getData()
-})
+// const enviar = document.querySelector("#enviar")
+// enviar.addEventListener('click', (event)=>{
+//     event.preventDefault()
+//     metodos.getData()
+// })
