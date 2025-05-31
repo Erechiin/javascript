@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const operacao=(data)=>{
+            const vogais = ["a","e","i","o","u"]
+            const vogaisData = []
+            for(i in data){
+                if(vogais.find((vogal)=>vogal == data[i]) != undefined){
+                    vogaisData.push(data[i])
+                } else{
+                    continue
+                }
+            }
+            return vogaisData
+        }
+        const analise = (data)=>{
+            let isNan = Number(data)
+            if(data.lentgh == 0){
+                alert("Digite um valor válido!")
+                getData()
+            }else if(isNaN(isNan) == false){
+                alert('Digite um valor válido!')
+                getData()
+            } else{
+                alert(`Vogais em '${data}': ${operacao(data.toLowerCase())}`)   
+            }
+        }
+        const getData=()=>{
+            let data = prompt("Digite uma palavra ou frase: ")
+            analise(data)
+        }
+        while(true){
+            getData()
+        }
+    </script>
+</body>
+</html>
