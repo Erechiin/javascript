@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // Escreva uma função que receba um array de números e
+        // retorne o maior número presente no array.
+
+        let listaO = []
+
+        const operacao=(lista)=>{
+            let listaSort = lista.sort((a,b) => a - b) //Método dentro do método pra organizar a array
+            let maior = listaSort[listaSort.length-1]
+            return maior
+        }
+        const analise = (data)=>{
+            if(data=="ok" || data == "Ok" || data == "oK" || data == "OK"){
+                alert(`Sua lista: ${listaO}`)
+                alert(`Maior número da lista: ${operacao(listaO)}`)
+                listaO = []
+            } else{
+                data = Number(data)
+                if(typeof data!=="number" || isNaN(data)){
+                    alert("Digite um valor válido!")
+                    getData()
+                } else{
+                    listaO.push(data)
+                    alert("dica: digite 'ok' para verificar a lista!")
+                }
+            }
+        }
+        const getData=()=>{
+            let Data = prompt("Adicionar número na lista: ")
+            
+            analise(Data)
+        }
+        while(true){
+            getData()
+        }
+    </script>
+</body>
+</html>

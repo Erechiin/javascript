@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Crie uma função de calcule a potência do primeiro número
+        // elevado ao segundo número.
+        const operacao=(n1, n2)=>{
+            return n1**n2
+        }
+        const analise = (num1,num2)=>{
+            if(typeof num1!=="number" || typeof num2 !=="number" || isNaN(num1)|| isNaN(num2)){
+                alert("Digite valores válidos!")
+                getData()
+            } else{
+                alert(`${num1} elevado a ${num2}: ${operacao(num1,num2)}`)   
+            }
+        }
+        const getData=()=>{
+            let numero1 = Number(prompt("Digite um número: "))
+            let numero2 = Number(prompt("Digite o segundo número: "))
+            analise(numero1, numero2)
+        }
+        while(true){
+            getData()
+        }
+    </script>
+</body>
+</html>

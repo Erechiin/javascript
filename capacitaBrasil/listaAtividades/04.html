@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Calcule a área de um círculo baseada na passagem de
+        // parâmetro de seu raio.
+
+        const operacao=(n1)=>{
+            return 3.14*(n1**2)
+        }
+        const analise = (num1)=>{
+            if(typeof num1!=="number" || isNaN(num1)){
+                alert("Digite um valor válido!")
+                getData()
+            } else{
+                alert(`A área do circulo de raio ${num1} é: ${operacao(num1)} cm²`)   
+            }
+        }
+        const getData=()=>{
+            let numero1 = Number(prompt("Digite um número (cm): "))
+            analise(numero1)
+        }
+        while(true){
+            getData()
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Calcule o fatorial de um número passado por uma função.
+
+        const operacao=(n1)=>{
+            let result = n1
+            for(let i=n1-1; i>0; i--){
+                result=result*i
+            }
+            return result
+        }
+        const analise = (num1)=>{
+            if(typeof num1!=="number" || isNaN(num1)){
+                alert("Digite um valor válido!")
+                getData()
+            } else{
+                alert(`o fatorial de ${num1} é: ${operacao(num1)}`)   
+            }
+        }
+        const getData=()=>{
+            let numero1 = Number(prompt("Digite um número: "))
+            analise(numero1)
+        }
+        while(true){
+            getData()
+        }
+    </script>
+</body>
+</html>
