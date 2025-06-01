@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // Crie uma função que receba dois números e um
+        // operador (+, -, *, /) e retorne o resultado da operação.
+
+        const operacao=(n1, n2, operador)=>{
+            switch(operador){
+                case "+":
+                    return n1+n2
+                    break
+                case "-":
+                    return n1-n2
+                    break
+                case "*":
+                    return n1*n2
+                    break
+                case "/":
+                    return n1/n2
+                    break
+                default:
+                    alert("algo deu errado, tente novamente.")
+                    getData()
+                    break
+            }
+            
+        }
+        const analise = (num1, num2, operador)=>{
+            if(typeof num1!=="number" || isNaN(num1) || typeof num2!=="number" || isNaN(num2)){
+                alert("Digite um valor válido!")
+                getData()
+            } else if(operador!=='+' && operador!=='-' && operador!=='*' && operador!=='/'){
+                alert("Digite um dos operadores listados!")
+                getData()
+            } else{
+                alert(`${num1}${operador}${num2} = ${operacao(num1, num2, operador)}`)   
+            }
+        }
+        const getData=()=>{
+            let numero1 = Number(prompt("Digite um número: "))
+            let numero2 = Number(prompt("Digite outro número: "))
+            let operador = prompt("Digite um operador entre +, -, * ou /: ")
+            analise(numero1, numero2, operador)
+        }
+        while(true){
+            getData()
+        }
+    </script>
+</body>
+</html>

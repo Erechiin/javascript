@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // Escreva uma função que recebe um número e retorna se
+        // ele é par ou ímpar.
+        const operacao=(n1)=>{
+            if(n1%2==0){
+                return "par"
+            } else{
+                return "impar"
+            }
+        }
+
+        const analise = (num1)=>{
+            if(typeof num1!=="number" || isNaN(num1)){
+                alert("Digite um valor válido!")
+                getData()
+            } else{
+                alert(`o número ${num1} é: ${operacao(num1)}`)   
+            }
+        }
+        const getData=()=>{
+            let numero1 = Number(prompt("Digite um número: "))
+            analise(numero1)
+        }
+        while(true){
+            getData()
+        }
+    </script>
+</body>
+</html>

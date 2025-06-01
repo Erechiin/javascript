@@ -8,19 +8,12 @@
 <body>
     
     <script>
-        // Escreva uma função que conte quantas vogais existem em
-        // uma string fornecida.
+        // Crie uma função que recebe uma string e retorna essa
+        // string invertida.
+        
         const operacao=(data)=>{
-            const vogais = ["a","e","i","o","u"]
-            const vogaisData = []
-            for(i in data){
-                if(vogais.find((vogal)=>vogal == data[i]) != undefined){
-                    vogaisData.push(data[i])
-                } else{
-                    continue
-                }
-            }
-            return vogaisData
+            let invertido = data.split("").reverse().join("")
+            return invertido
         }
         const analise = (data)=>{
             let isNan = Number(data)
@@ -31,7 +24,7 @@
                 alert('Digite um valor válido!')
                 getData()
             } else{
-                alert(`Vogais em '${data}': ${operacao(data.toLowerCase())}`)   
+                alert(`'${data}' ao contrário: ${operacao(data)}`)   
             }
         }
         const getData=()=>{
