@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // Crie uma função que valide um CPF (formato
+        // brasileiro) de acordo com as regras oficiais.
+
+
+        // 1. Formato básico:
+        // Deve conter 11 dígitos numéricos, com ou sem pontuação.
+
+        // Exemplo válido: 123.456.789-09 ou 12345678909.
+
+        // 2. Rejeitar CPFs com todos os dígitos iguais:
+        // Exemplos inválidos: 111.111.111-11, 000.000.000-00, etc.
+
+        // 3. Cálculo dos dígitos verificadores.
+        const isNumber = (el)=>{
+            const numbers = [0,1,2,3,4,5,6,7,8,9]
+            let verificacao = false
+            for(let i=0; i<10;i++){
+                verificacao = el == numbers[i]
+                if(verificacao){
+                    alert(`${el} é um número`)
+                    return true
+                }else if(i==9){
+                    alert(`${el} não é um número`)
+                    return false
+                } else{
+                    continue
+                }
+            }
+        }
+        const analiseCpf = (data) =>{
+            switch(data.length){
+                case 11:
+                    alert('11 caracteres')
+                    for(let i=0; i<data.length;i++){
+                        if(isNumber(data[i])){
+                            continue
+                        }else{
+                            alert('digite um cpf valido!')
+                            getData()
+                        }
+                    }
+                    break
+                case 14:
+                    alert('14 caracteres')
+                    break
+                default:
+                    alert('digite um cpf válido')
+                    getData()
+                    break
+            }
+        }
+
+        const getData = ()=>{
+            let data = String(prompt("Digite um cpf: "))
+            analiseCpf(data)
+        }
+
+        while(true){
+            getData()
+        }
+    </script>
+</body>
+</html>
