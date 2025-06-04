@@ -21,21 +21,32 @@
         // Exemplos inválidos: 111.111.111-11, 000.000.000-00, etc.
 
         // 3. Cálculo dos dígitos verificadores.
+        const verificacao = (data)=>{
+            let digitos = Number(data.split("").splice(0,8).join(""))
+            alert(`digitos: ${digitos}`)
+            let digitosVerific = data.split("").splice(9,2)
+            alert(`digitosVerific: ${digitosVerific}`)
+
+            for(let i=digitos.length-1, mult = 2; i>=0;i--,mult++){
+                
+            }
+        }
+        const areEqual = (data) =>{
+            return new Set(data).size == 1
+        }
         const isNumber = (el)=>{
             const numbers = [0,1,2,3,4,5,6,7,8,9]
             let verificacao = false
             for(let i=0; i<10;i++){
                 verificacao = el == numbers[i]
                 if(verificacao){
-                    alert(`${el} é um número`)
                     return true
                 }else if(i==9){
-                    alert(`${el} não é um número`)
                     return false
                 } else{
                     continue
                 }
-            }
+            } //3,6,9
         }
         const analiseCpf = (data) =>{
             switch(data.length){
@@ -49,9 +60,26 @@
                             getData()
                         }
                     }
+                    alert(`antes do are equal ${data}`)
+                    if(areEqual(data)){
+                        alert("seu cpf não é valido (digitos iguais)")
+                        getData()
+                    }else{
+                        alert("cpf valido, agr ira passar por uma verificação")
+                        alert(`depois do are equal ${data}`)
+                        verificacao(data)
+                    }
                     break
                 case 14:
                     alert('14 caracteres')
+                    let dataCopy = data.split("")
+                    alert(`1: ${dataCopy}`)
+                    for(let i=3; i<=9;i=i+3){
+                        dataCopy.splice(i,1)
+                    }
+                    dataCopy = dataCopy.join("")
+                    alert(`2: ${dataCopy}`)
+                    analiseCpf(dataCopy)
                     break
                 default:
                     alert('digite um cpf válido')
