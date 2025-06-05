@@ -11,7 +11,6 @@
         // Crie uma função que valide um CPF (formato
         // brasileiro) de acordo com as regras oficiais.
 
-
         // 1. Formato básico:
         // Deve conter 11 dígitos numéricos, com ou sem pontuação.
 
@@ -21,17 +20,37 @@
         // Exemplos inválidos: 111.111.111-11, 000.000.000-00, etc.
 
         // 3. Cálculo dos dígitos verificadores.
-        const verificacao = (data)=>{
-            let digitos = Number(data.split("").splice(0,8).join(""))
-            alert(`digitos: ${digitos}`)
-            let digitosVerific = data.split("").splice(9,2)
-            alert(`digitosVerific: ${digitosVerific}`)
 
+        const verificacao = (data)=>{ //Verifica se o cpf é valido, usando os 2 ultimos digitos
+            let digitos = data.split('').map(Number)
+            let digitosAlt = []
+            let verificador
+            let resto
             for(let i=digitos.length-1, mult = 2; i>=0;i--,mult++){
-                
+                digitosAlt.push(digitos[i]*mult)
+            }
+            
+            while(digitosAlt.length !== 1){
+                let num = digitosAlt.pop()
+                let num2 = digitosAlt.pop()
+                digitosAlt.unshift(num + num2)
+            }
+            
+            resto = digitosAlt[0]%11
+            if(resto<2){
+                verificador = 0
+            } else{
+                verificador = 11 - resto
+            }
+
+            if(data.length == 10){
+                data = data.concat(String(verificador))
+                return data
+            } else if(data.length == 9){
+                return verificacao(data.concat(String(verificador)))
             }
         }
-        const areEqual = (data) =>{
+        const areEqual = (data) =>{ // verifica se todos os numeros sao iguais
             return new Set(data).size == 1
         }
         const isNumber = (el)=>{
@@ -51,7 +70,6 @@
         const analiseCpf = (data) =>{
             switch(data.length){
                 case 11:
-                    alert('11 caracteres')
                     for(let i=0; i<data.length;i++){
                         if(isNumber(data[i])){
                             continue
@@ -60,26 +78,42 @@
                             getData()
                         }
                     }
-                    alert(`antes do are equal ${data}`)
                     if(areEqual(data)){
-                        alert("seu cpf não é valido (digitos iguais)")
+                        alert("seu cpf não é valido (digitos iguais), tente novamente.")
                         getData()
                     }else{
-                        alert("cpf valido, agr ira passar por uma verificação")
-                        alert(`depois do are equal ${data}`)
-                        verificacao(data)
+                        let dataCopy = [...data].splice(0,9).join("")
+                        if(verificacao(dataCopy)!==data){
+                            let dataFinal = data.split("")
+                            dataFinal.splice(3,0,".")
+                            dataFinal.splice(7,0,".")
+                            dataFinal.splice(11,0,"-")
+                            dataFinal = dataFinal.join('')
+                            alert(`Seu cpf ${dataFinal} não é valido, tente novamente.`)
+                            alert(`Dica: tente usar um cpf real, ou que atenda as regras oficiais!`)
+                            getData()
+                        }else{
+                            let dataFinal = data.split("")
+                            dataFinal.splice(3,0,".")
+                            dataFinal.splice(7,0,".")
+                            dataFinal.splice(11,0,"-")
+                            dataFinal= dataFinal.join('')
+                            alert(`seu cpf ${dataFinal} é valido, pode prosseguir`)
+                        }
                     }
                     break
                 case 14:
-                    alert('14 caracteres')
                     let dataCopy = data.split("")
-                    alert(`1: ${dataCopy}`)
-                    for(let i=3; i<=9;i=i+3){
-                        dataCopy.splice(i,1)
+                    if(dataCopy[3] == '.' && dataCopy[7] == '.' && dataCopy[11] == '-'){
+                        for(let i=3; i<=9;i=i+3){
+                            dataCopy.splice(i,1)
+                        }
+                        dataCopy = dataCopy.join("")
+                        analiseCpf(dataCopy)
+                    }else{
+                        alert('digite um cpf válido')
+                        getData()
                     }
-                    dataCopy = dataCopy.join("")
-                    alert(`2: ${dataCopy}`)
-                    analiseCpf(dataCopy)
                     break
                 default:
                     alert('digite um cpf válido')

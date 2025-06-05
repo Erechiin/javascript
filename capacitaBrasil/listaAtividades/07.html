@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // Crie uma função que gere os primeiros n números da
+        // sequência de Fibonacci.
+
+        const operacao=(n)=>{
+            const sequencia = [0,1]
+            if(n==1){
+                return sequencia[1]
+            }else{
+                while(sequencia.length<n+1){
+                    let sequenciaCopy = [...sequencia]
+                    let num1 = sequenciaCopy.pop()
+                    let num2 = sequenciaCopy.pop()
+                    sequencia.push(num1+num2)
+                }
+                return sequencia
+            }
+        }
+        const analise = (num)=>{
+            if(typeof num!=="number" || isNaN(num) || num <= 0){
+                alert("Digite um valor válido!")
+                getData()
+            } else{
+                alert(`primeiros ${num} números da sequência de Fibonacci: ${operacao(num)}`)   
+            }
+        }
+        const getData=()=>{
+            let numero1 = Number(prompt("Digite um número: "))
+            analise(numero1)
+        }
+        while(true){
+            getData()
+        }
+    </script>
+</body>
+</html>
