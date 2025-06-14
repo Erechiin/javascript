@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .boneco{
+            width: 50px;
+            height: 50px;
+            background-color: lightgreen;
+            border: 1px solid darkgreen;
+            transform: translate(4px, 20px);
+        }
+    </style>
+</head>
+<body>
+    <div class="boneco"></div>
+
+    <script>
+        const boneco = document.querySelector(".boneco")
+        const teclasPressionadas = {}
+        let bonecoX = 4
+        let bonecoY = 20
+        
+        const whichDirection = (el)=>{
+            switch(el){
+                case 'w':
+                    return 'top'
+                    break
+                case 'd':
+                    return 'right'
+                    break
+                case 's':
+                    return 'bottom'
+                    break
+                case 'a':
+                    return 'left'
+                    break
+                default:
+                    return 0
+                    break
+            }
+        }
+
+        const analise = (el) =>{
+            const bonecoDirecao = whichDirection(el)
+            const docWidth = document.documentElement.clientWidth
+            const docheight = document.documentElement.clientHeight
+
+            if(bonecoDirecao == 'top' && bonecoY <=0){
+                console.log('top 0')
+                return bonecoY = 5
+
+            } else if(bonecoDirecao == 'right' && bonecoX >= docWidth - 50){
+                console.log('right 0')
+                return bonecoX = docWidth - 55
+
+            } else if(bonecoDirecao == 'bottom' && bonecoY >=docheight - 50){
+                console.log('bottom 0')
+                return bonecoY = docheight - 55
+
+            } else if(bonecoDirecao == 'left' && bonecoX <=0){
+                console.log('left 0')
+                return bonecoX = 5
+            } else{
+                switch(bonecoDirecao){
+                    case 'top':
+                        console.log('top')
+                        return bonecoY -= 10
+                        break
+                    case 'right':
+                        console.log('right')
+                        return bonecoX += 10
+                        break
+                    case 'bottom':
+                        console.log('bottom')
+                        return bonecoY += 10
+                        break
+                    case 'left':
+                        console.log('left')
+                        return bonecoX -= 10
+                        break
+                    default:
+                        console.log('default')
+                        return 0
+                }
+            }
+        }
+    
+    const movimento = (el) =>{
+            const bonecoEstilo = window.getComputedStyle(boneco)
+
+            if(teclasPressionadas["a"] && teclasPressionadas["w"]){
+                analise('a')
+                analise('w')
+                boneco.style.transform = `translate(${bonecoX}px, ${bonecoY}px)`
+                console.log(bonecoX)
+                console.log(bonecoY)
+            } else if(teclasPressionadas["a"] && teclasPressionadas["s"]){
+                analise('a')
+                analise('s')
+                boneco.style.transform = `translate(${bonecoX}px, ${bonecoY}px)`
+                console.log(bonecoX)
+                console.log(bonecoY)
+            } else if(teclasPressionadas["d"] && teclasPressionadas["w"]){
+                analise('d')
+                analise('w')
+                boneco.style.transform = `translate(${bonecoX}px, ${bonecoY}px)`
+            } else if(teclasPressionadas["d"] && teclasPressionadas["s"]){
+                analise('d')
+                analise('s')
+                boneco.style.transform = `translate(${bonecoX}px, ${bonecoY}px)`
+            } else{
+                switch(el){
+                    case 'w':
+                        boneco.style.transform = `translate(${bonecoX}px,${analise('w')}px)`
+                        break
+                    case 'd':
+                        boneco.style.transform = `translate(${analise('d')}px, ${bonecoY}px)`
+                        break
+                    case 's':
+                        boneco.style.transform = `translate(${bonecoX}px,${analise('s')}px)`
+                        break
+                    case 'a':
+                        boneco.style.transform = `translate(${analise('a')}px, ${bonecoY}px)`
+                        break
+                    default:
+                        return 0
+                        break
+                }
+            }
+        }
+
+        addEventListener('keydown', (el)=>{
+            teclasPressionadas[el.key.toLowerCase()] = true
+            movimento(el.key)
+        })
+
+        addEventListener('keyup', (el)=>{
+            delete teclasPressionadas[el.key]
+        } )
+    </script>
+</body>
+</html>
