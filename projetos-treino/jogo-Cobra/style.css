@@ -52,7 +52,11 @@ body{
 }
 
 .cabeca{
+    /* position: absolute; */
+    /* top: 50%; */
+    /* left: 50%; */
     background-color: rgb(0, 187, 0);
+    transform: translate(0px,0px);
 }
 
 .corpo{

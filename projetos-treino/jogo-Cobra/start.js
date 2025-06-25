@@ -19,10 +19,9 @@ const pageInit = ()=>{
                 break
             default:
                 gameStatus.running = true
-                // gameStart()
                 Aviso.classList.toggle('aviso')
                 Aviso.classList.add('aviso-hidden')
-                alert('ta nao')
+                gameStart()
                 break
         }
     })
