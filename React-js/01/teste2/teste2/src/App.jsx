@@ -1,9 +1,14 @@
-function ab() {
-  alert('oi')
-}
+import {Titulo,Corpo,Rodape,FloatingLogo} from "./componente.jsx"
 
-function App() {
-  return <button onClick={ab}>cliq</button>
+const App=()=>{
+  return(
+    <> {/*Fragment*/}
+    <Titulo />
+    <Corpo />
+    <FloatingLogo />
+    <Rodape />
+  </>
+  )
 }
 
 export default App
