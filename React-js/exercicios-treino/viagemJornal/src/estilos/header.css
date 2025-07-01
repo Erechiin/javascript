@@ -1,0 +1,17 @@
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    height: 55px;
+
+    background-color: #F55A5A;
+    color: white;
+    font-size: 0.9rem;
+    font-family: 'inter';
+    padding: 16px 10px;
+}
+
+img{
+    width: 24px;
+}

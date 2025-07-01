@@ -1,0 +1,51 @@
+main{
+    display: flex;
+    gap: 20px;
+    width: 470px;
+    height: 168px;
+    margin: 20px auto;
+    font-family: inter;
+    color: #2B283A;
+}
+
+.macaco{
+    width: 125px;
+    height: 168px;
+    border-radius: 5px;
+}.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.wrapper nav{
+    display: flex;
+    gap: 5px;
+    /* margin-block: 10px; */
+    font-size: 0.64em;
+}
+nav p{
+    letter-spacing: 0.15em;
+}
+nav img{
+    width: 7px;
+    margin-right: 5px;
+}
+nav a{
+    color: #918E9B;
+}
+
+section h2{
+    margin-block: 10px;
+    font-size: 25px;
+}
+
+.date{
+    font-weight: 700;
+    margin-block: 10px;
+    font-size: 0.64em;
+}
+
+.text{
+    font-size: 0.64em;
+    line-height: 1.5em;
+}
