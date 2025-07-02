@@ -1,0 +1,20 @@
+.calculadora-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    background-color: rgb(218, 123, 0);
+    border: 5px solid rgba(109, 63, 4, 0.527);
+    padding-top: 30px;
+    border-radius: 5px;
+}
+
+.botoes-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    padding: 20px 0;
+}
