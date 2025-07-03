@@ -4,10 +4,10 @@
     left: 50%;
     transform: translate(-50%,-50%);
     width: 400px;
-    background-color: rgb(218, 123, 0);
-    border: 5px solid rgba(109, 63, 4, 0.527);
+    background-color: #494744;
+    border: 5px solid #302e2c;
     padding-top: 30px;
-    border-radius: 5px;
+    border-radius: 50px;
 }
 
 .botoes-container{

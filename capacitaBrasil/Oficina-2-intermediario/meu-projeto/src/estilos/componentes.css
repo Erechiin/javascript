@@ -1,16 +1,58 @@
 .visor{
+    position: relative;
     display: flex;
     justify-content: right;
     align-items: center;
-    background-color: black;
+    background-color: #02131d;
     color: white;
     width: 90%;
     margin: 0 auto;
-    height: 80px;
+    height: 90px;
     padding: 5px 10px;
+    overflow-x: hidden;
+    border-radius: 10px;
+    z-index: 0;
 }
 .visor-valor{
+    white-space: nowrap;
     font-size: 1.5em;
+}
+.visor-valor::before:hover{
+    cursor: pointer;
+}
+.history{
+    position: absolute;
+    top: 35px;
+    left: 25px;
+    width: 30px;
+    height: 30px;
+    background-image: url('../assets/history_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.history:hover{
+    cursor: pointer;
+}
+
+.on{
+    position: absolute;
+    top: 70px;
+    left: 0px;
+    background-color: #022336;
+    border: 2px solid #007bc26b;
+    width: 200px;
+    height: 150px;
+    overflow-y: scroll;
+    white-space: nowrap;
+    color: white;
+}
+.on span{
+    display: block;
+    padding: 5px;
+}
+.off{
+    display: none;
 }
 
 .botao{
@@ -18,14 +60,22 @@
     justify-content: center;
     align-items: center;
     width: 80px;
-    height: 80px;
+    height: 65px;
     border: 2px solid black;
-    background-color: rgba(0, 0, 0, 0.288);
+    background-color: #811115;
     color: white;
-    border-radius: 5px;
+    border-radius: 50%;
     user-select: none;
 }
 .botao:hover{
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.582);
+    background-color: #5a0c0e;
+    border: 2px solid rgba(0, 0, 0, 0.589);
+}
+.backspace{
+    color: #5a0c0e;
+    background-image: url('../assets/back.png');
+    background-repeat: no-repeat;
+    background-position: 45% center;
+    background-size: 45%;
 }
