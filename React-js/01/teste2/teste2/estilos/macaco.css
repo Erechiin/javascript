@@ -57,6 +57,10 @@ body{
     color: rgb(42, 112, 204);
 }
 
+main{
+    height: 60vh;
+}
+
 .footer{
     width: 100%;
     padding: 10px;
@@ -73,4 +77,24 @@ body{
     width: 300px;
     opacity: 10%;
     border-radius: 50%;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+.pendente{
+    color: rgb(0, 137, 190);
+    text-decoration: none;
+}
+
+.ativo{
+    color: rgb(48, 117, 173);
+    text-decoration: underline;
+}
+
+.aboutP{
+    margin-block: 10px;
+    text-indent: 20px;
 }
